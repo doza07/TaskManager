@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:color="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Show task</title>
+</head>
+<body>
+<center>
+<p th:text="${todo.getCases() +', '+ todo.getPriority() +'                    ' + todo.getStatus()}">Value</p>
+    <p th:text="${todo.getDescription()}">Value<p/>
+    </center>
+<br/>
+
+<form th:method="GET" th:action="@{/todo/{id}/edit(id=${todo.getId()})}">
+    <input type="submit" value="Edit"/>
+</form>
+
+<form th:method="DELETE" th:action="@{/todo/{id}(id=${todo.getId()})}">
+    <input type="submit" value="Delete"/>
+</form>
+<form action="http://localhost:8080/todo/all_task">
+    <input type="submit" value="Home Page" />
+</form>
+</body>
+</html>

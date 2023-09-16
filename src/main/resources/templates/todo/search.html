@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Search ToDo</title>
+</head>
+<body>
+<form th:method="POST" th:action="@{/todo/search}">
+  <label for="query">Enter your query: </label>
+  <input type="text" id="query" name="query"/>
+  <br/>
+  <input type="submit" value="Find!"/>
+</form>
+
+<div th:if="${todo}">
+  <div th:if="${todo.isEmpty()}">
+    <span>ToDo not found</span>
+  </div>
+
+  <div th:each="task : ${todo}">
+    <p th:text="${task.getCases() +', '+ task.getPriority() +', '+ task.getStatus()}">ToDo</p>
+    <hr/>
+  </div>
+</div>
+
+<form action="http://localhost:8080/todo/all_task">
+  <input type="submit" value="Home Page" />
+</form>
+
+</body>
+</html>
